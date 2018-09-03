@@ -48,9 +48,27 @@ public class Jogo {
 	}
 
 	public String relatorioPartida() {
-		return status;
+		if (isIniciada == false) {
+			throw new ExcecaoJogo("Partida nÃ£o iniciada");
+		}
+
+		String sequencia = "";
+		
+		for (int i = 0; i < pecaDoJogador.length - 1; i++) {
+			sequencia += pecaDoJogador[i].toString() + ", ";
+		}
+		
+		sequencia += pecaDoJogador[pecaDoJogador.length - 1];
+		if (status.equals("Fim")) {
+			pecaDoJogador[0] = null;
+		}
+
+		String relatorio = "Status: " + status + "\nJogadores: " + sequencia + "\nTabuleiro: " + tabuleiro
+				+ "\nJogador da rodada: " + pecaDoJogador[(indiceDePecas % pecaDoJogador.length)] + "\nPrÃ³ximo tile: "
+				+ tilesUsar.get(tilesUsar.size() - 1);
+
+		return relatorio;	
 	}
-	
 	
 	public Jogo girarTile() {	
 		return this;
