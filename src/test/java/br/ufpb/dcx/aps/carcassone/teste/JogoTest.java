@@ -30,33 +30,33 @@ public class JogoTest {
 
 	@Test //#01
 	public void iniciarPartidaInvalida() {
-		ocorreExcecaoJogo(() -> jogo.iniciarPartida(), "Cada partida deve ter uma sequÃªncia de pelo menos dois jogadores");
+		ocorreExcecaoJogo(() -> jogo.iniciarPartida(), "Cada partida deve ter uma sequência de pelo menos dois jogadores");
 
 		ocorreExcecaoJogo(() -> jogo.iniciarPartida(PRETO),
-				"Cada partida deve ter uma sequÃªncia de pelo menos dois jogadores");
+				"Cada partida deve ter uma sequência de pelo menos dois jogadores");
 
 		ocorreExcecaoJogo(() -> jogo.iniciarPartida(PRETO, PRETO),
-				"NÃ£o pode haver repetiÃ§Ã£o de cores na sequÃªncia de jogadores");
+				"Não pode haver repetição de cores na sequência de jogadores");
 
 		ocorreExcecaoJogo(() -> jogo.iniciarPartida(PRETO, AMARELO, PRETO),
-				"NÃ£o pode haver repetiÃ§Ã£o de cores na sequÃªncia de jogadores");
+				"Não pode haver repetição de cores na sequência de jogadores");
 
 		mockarTiles(tiles, t45);
 		jogo.iniciarPartida(AZUL, VERDE);
 		ocorreExcecaoJogo(() -> jogo.iniciarPartida(AMARELO, VERMELHO),
-				"NÃ£o pode iniciar uma partida enquanto a partida anterior nÃ£o for finalizada");
+				"Não pode iniciar uma partida enquanto a partida anterior não for finalizada");
 	}
 
 	@Test //#02
 	public void relatorioPartidaErro() {
-		ocorreExcecaoJogo(() -> jogo.relatorioPartida(), "Partida nÃ£o iniciada");
+		ocorreExcecaoJogo(() -> jogo.relatorioPartida(), "Partida não iniciada");
 	}
 
 	@Test //#03
 	public void iniciarPartidaValida() {
 		mockarTiles(tiles, t45);
 		jogo.iniciarPartida(AZUL, VERDE);
-		verificarRelatorioPartida("InÃ­cio", "AZUL, VERDE", "", "AZUL", "45N");
+		verificarRelatorioPartida("Início", "AZUL, VERDE", "", "AZUL", "45N");
 	}
 
 	@Test //#04
@@ -64,13 +64,13 @@ public class JogoTest {
 		mockarTiles(tiles, t45);
 		jogo.iniciarPartida(VERDE, PRETO, AMARELO);
 		girar(1);
-		verificarRelatorioPartida("InÃ­cio", "VERDE, PRETO, AMARELO", "", "VERDE", "45L");
+		verificarRelatorioPartida("Início", "VERDE, PRETO, AMARELO", "", "VERDE", "45L");
 
 		girar(2);
-		verificarRelatorioPartida("InÃ­cio", "VERDE, PRETO, AMARELO", "", "VERDE", "45O");
+		verificarRelatorioPartida("Início", "VERDE, PRETO, AMARELO", "", "VERDE", "45O");
 
 		girar(1);
-		verificarRelatorioPartida("InÃ­cio", "VERDE, PRETO, AMARELO", "", "VERDE", "45N");
+		verificarRelatorioPartida("Início", "VERDE, PRETO, AMARELO", "", "VERDE", "45N");
 	}
 
 	@Test //#05
@@ -85,14 +85,14 @@ public class JogoTest {
 	public void posicionarInicialInvalida() {
 		mockarTiles(tiles, t45);
 		ocorreExcecaoJogo(() -> jogo.posicionarInicial(),
-				"O tile inicial nÃ£o pode ser posicionado antes de iniciar a partida");
+				"O tile inicial não pode ser posicionado antes de iniciar a partida");
 	}
 
 	@Test //#07
 	public void posicionarInicialInvalida2() {
 		mockarTiles(tiles, t45, t19);
 		ocorreExcecaoJogo(() -> jogo.posicionarInicial(),
-				"O tile inicial nÃ£o pode ser posicionado antes de iniciar a partida");
+				"O tile inicial não pode ser posicionado antes de iniciar a partida");
 	}
 
 	@Test //#08
@@ -126,10 +126,10 @@ public class JogoTest {
 		mockarTiles(tiles, t45, t19);
 		jogo.iniciarPartida(VERDE, PRETO);
 		rodadaInicialSemGirar();
-		verificarRelatorioPartida("InÃ­cio", "VERDE, PRETO", "45N", "PRETO", "19N");
+		verificarRelatorioPartida("Início", "VERDE, PRETO", "45N", "PRETO", "19N");
 
 		girar(3);
-		verificarRelatorioPartida("InÃ­cio", "VERDE, PRETO", "45N", "PRETO", "19O");
+		verificarRelatorioPartida("Início", "VERDE, PRETO", "45N", "PRETO", "19O");
 	}
 
 	@Test //#12
@@ -177,13 +177,13 @@ public class JogoTest {
 		doisTilesAmareloVermelhoRodada1SemGirar();
 
 		ocorreExcecaoJogo(() -> rodada(3, t45, LESTE, 0, NAO_FINALIZA),
-				"O lado Leste do tile 45 (Campo) Ã© incompatÃ­vel com o lado Oeste do tile 19 (Cidade)");
+				"O lado Leste do tile 45 (Campo) é incompatível com o lado Oeste do tile 19 (Cidade)");
 		ocorreExcecaoJogo(() -> rodada(2, t45, OESTE, 0, NAO_FINALIZA),
-				"O lado Oeste do tile 45 (Campo) Ã© incompatÃ­vel com o lado Leste do tile 19 (Cidade)");
+				"O lado Oeste do tile 45 (Campo) é incompatível com o lado Leste do tile 19 (Cidade)");
 		ocorreExcecaoJogo(() -> rodada(3, t45, SUL, 0, NAO_FINALIZA),
-				"O lado Sul do tile 45 (Campo) Ã© incompatÃ­vel com o lado Norte do tile 19 (Cidade)");
+				"O lado Sul do tile 45 (Campo) é incompatível com o lado Norte do tile 19 (Cidade)");
 		ocorreExcecaoJogo(() -> rodada(2, t45, NORTE, 0, NAO_FINALIZA),
-				"O lado Norte do tile 45 (Campo) Ã© incompatÃ­vel com o lado Sul do tile 19 (Cidade)");
+				"O lado Norte do tile 45 (Campo) é incompatível com o lado Sul do tile 19 (Cidade)");
 	}
 	
 	@Test //#18
@@ -209,7 +209,7 @@ public class JogoTest {
 		mockarTiles(tiles, t08, t64);
 		jogo.iniciarPartida(AMARELO, VERMELHO);	
 		ocorreExcecaoJogo(() -> jogo.posicionarMeepleEstrada(NORTE),
-				"ImpossÃ­vel posicionar meeple. Tile invÃ¡lido ou inexistente");
+				"Impossível posicionar meeple. Tile inválido ou inexistente");
 	}
 	
 	@Test //#21
@@ -282,7 +282,7 @@ public class JogoTest {
 	}
 
 	// girarTile? - posicionarTile - posicionarMeeple? - finalizarRodada
-	// COR InÃ­cio - COR Tile - COR Meeple - OUTRA COR InÃ­cio
+	// COR Início - COR Tile - COR Meeple - OUTRA COR Início
 
 	private void ocorreExcecaoJogo(ExceptionThrower et, String mensagem) {
 		ocorreExcecao(et).tipoExcecao(ExcecaoJogo.class).mensagem(mensagem);
@@ -296,7 +296,7 @@ public class JogoTest {
 			String proximaPeca) {
 		String relatorio = jogo.relatorioPartida();
 		Assert.assertEquals("Status: " + status + "\nJogadores: " + sequencia + "\nTabuleiro: " + tabuleiro
-				+ "\nJogador da rodada: " + jogadorRodada + "\nPrÃ³ximo tile: " + proximaPeca, relatorio);
+				+ "\nJogador da rodada: " + jogadorRodada + "\nPróximo tile: " + proximaPeca, relatorio);
 	}
 	
 	private void verificarEstradas(String verEstradas) {
@@ -319,7 +319,7 @@ public class JogoTest {
 		Assert.assertEquals("Mosteiros: " + verMosteiros, mosteiros);
 	}
 	
-	// PrÃ©-condiÃ§Ãµes
+	// Pré-condições
 	private void rodadaInicialSemGirar() {
 		rodadaInicial(0, 0, FINALIZA);
 	}
