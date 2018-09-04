@@ -211,20 +211,25 @@ public class TabuleiroFlexivel {
 
 	@Override
 	public String toString() {
-		String string = "";
+		if (extremoLeste == null) {
+			return "";
+		}
+
+		String s = "";
 
 		CelulaTabuleiro[][] tabuleiro = montarTabuleiro();
-		if (tabuleiro != null) {
+
 		for (int j = tabuleiro[0].length - 1; j >= 0; j--) {
 			for (int i = 0; i < tabuleiro.length; i++) {
-				string += (tabuleiro[i][j] == null) ? espacoVazio : tabuleiro[i][j].getTile();
+				s += (tabuleiro[i][j] == null) ? espacoVazio : tabuleiro[i][j].getTile().toString();
 			}
-			string += "\n";
+
+			if (j > 0) {
+				s += "\n";
+			}
 		}
-		
-		string = string.substring(0,string.length()-1);
-		}
-		return string;
+
+		return s;
 	}
 	
 

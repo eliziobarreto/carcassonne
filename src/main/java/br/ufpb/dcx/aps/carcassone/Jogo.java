@@ -71,13 +71,24 @@ public class Jogo {
 	}
 	
 	public Jogo girarTile() {	
+		if(proximoTile != null);
+		proximoTile.girar();
 		return this;
+
 	}
 
 
 	public Jogo posicionarInicial() {
+		status = "Tile";
+		
+		if(isIniciada == false){
+			throw new ExcecaoJogo("O tile inicial nÃ£o pode ser posicionado antes de iniciar a partida");
+		}
+		tabuleiro.adicionarPrimeiroTile(proximoTile);
+		
 		return this;
 	}
+	
 
 	private void pegarProximoTile() {
 		Tile t = tiles.pegar();
@@ -88,13 +99,18 @@ public class Jogo {
 	}
 
 	public Jogo finalizarRodada() {
+		
 		return this;
+	
 	}
 
 
 	public Jogo posicionarTile(Tile tileReferencia, Lado ladoTileReferencia) {
+		
 		return this;		
 	}
+	
+	
 	
 	public Jogo posicionarMeepleEstrada(Lado lado) {
 		return this;
