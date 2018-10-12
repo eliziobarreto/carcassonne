@@ -12,7 +12,7 @@ public class Jogo {
 	private BolsaDeTiles tiles;
 	private TabuleiroFlexivel tabuleiro = new TabuleiroFlexivel("  ");
 	private boolean isIniciada = false;
-	private String status = "Início";
+	private String status = "InÃ­cio";
 	private Cor[] pecaDoJogador;
 	private Cor proximaPecaDoJogador;
 	static int indiceDePecas = 0;
@@ -25,18 +25,18 @@ public class Jogo {
 	public Jogo iniciarPartida(Cor... sequencia) {
 		
 		if(sequencia.length<2) {
-			throw new ExcecaoJogo("Cada partida deve ter uma sequência de pelo menos dois jogadores");
+			throw new ExcecaoJogo("Cada partida deve ter uma sequÃªncia de pelo menos dois jogadores");
 		}
 		for(int k=0;k < sequencia.length;k++) {
 			for(int i=0;i< sequencia.length;i++) {
 				if(k!=i && sequencia[i]==sequencia[k]) {
-					throw new ExcecaoJogo("Não pode haver repetição de cores na sequência de jogadores");
+					throw new ExcecaoJogo("NÃ£o pode haver repetiÃ§Ã£o de cores na sequÃªncia de jogadores");
 					}
 			}
 		}
 		
 		if(isIniciada){
-			throw new ExcecaoJogo("Não pode iniciar uma partida enquanto a partida anterior não for finalizada");
+			throw new ExcecaoJogo("NÃ£o pode iniciar uma partida enquanto a partida anterior nÃ£o for finalizada");
 		}
 		isIniciada = true;
 		pegarProximoTile();
@@ -49,7 +49,7 @@ public class Jogo {
 
 	public String relatorioPartida() {
 		if (isIniciada == false) {
-			throw new ExcecaoJogo("Partida não iniciada");
+			throw new ExcecaoJogo("Partida nÃ£o iniciada");
 		}
 
 		String sequencia = "";
@@ -64,7 +64,7 @@ public class Jogo {
 		}
 
 		String relatorio = "Status: " + status + "\nJogadores: " + sequencia + "\nTabuleiro: " + tabuleiro
-				+ "\nJogador da rodada: " + pecaDoJogador[(indiceDePecas % pecaDoJogador.length)] + "\nPróximo tile: "
+				+ "\nJogador da rodada: " + pecaDoJogador[(indiceDePecas % pecaDoJogador.length)] + "\nPrÃ³ximo tile: "
 				+ tilesUsar.get(tilesUsar.size() - 1);
 
 		return relatorio;	
@@ -81,19 +81,20 @@ public class Jogo {
 		status = "Tile";
 		
 		if(isIniciada == false){
-			throw new ExcecaoJogo("O tile inicial não pode ser posicionado antes de iniciar a partida");
+			throw new ExcecaoJogo("O tile inicial nÃ£o pode ser posicionado antes de iniciar a partida");
 		}
 		tabuleiro.adicionarPrimeiroTile(proximoTile);
 		pegarProximoTile();
 		return this;
 	}
 
-	private void pegarProximoTile() {
+	public Jogo pegarProximoTile() {
 		Tile t = tiles.pegar();
 		if(t != null) {
 			t.reset();
 		}
 		tilesUsar.add(t);
+		return this;
 	}
 
 	public Jogo finalizarRodada() {
@@ -102,7 +103,7 @@ public class Jogo {
 			status = "Fim";
 			pegarProximoTile();
 		} else {
-			status="Início";
+			status="InÃ­cio";
 			++indiceDePecas;
 			proximaPecaDoJogador = pecaDoJogador[indiceDePecas % pecaDoJogador.length];
 		}
@@ -146,6 +147,11 @@ public class Jogo {
 	}
 
 	public String getMosteiros() {
+		return null;
+	}
+
+	public String getRio() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -11,7 +11,7 @@ public class TipoTileCarcassonne extends TipoTile{
 	private boolean mosteiro;
 	private boolean cidadeContinua;
 
-	public TipoTileCarcassonne() {
+	public TipoTileCarcassonne(Origem base, TipoLadoCarcassonne rio, TipoLadoCarcassonne cidade, TipoLadoCarcassonne cidade2, TipoLadoCarcassonne cidade3, TipoLadoCarcassonne cidade4, boolean comEscudo, boolean semMosteiro, boolean umaCidade) {
 	}
 
 	public TipoTileCarcassonne(Origem origem, TipoLado ladoNorte, TipoLado ladoLeste, TipoLado ladoSul, TipoLado ladoOeste,

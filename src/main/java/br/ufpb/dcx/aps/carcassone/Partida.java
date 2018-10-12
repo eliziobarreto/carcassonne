@@ -57,6 +57,13 @@ public class Partida {
 	public Partida posicionarMeepleMosteiro() {
 		return this;
 	}
+	 public Partida posicionarMeepleRio() {
+		 return this;
+	 }
+	 
+	public String getRio() {
+		return null;
+	}
 
 	public String getEstradas() {
 		return null;

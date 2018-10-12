@@ -329,5 +329,6 @@ public class JogoTest {
 		jogo.iniciarPartida(AMARELO, VERMELHO);
 		rodadaInicialSemGirar();
 	}
+	
 
 }

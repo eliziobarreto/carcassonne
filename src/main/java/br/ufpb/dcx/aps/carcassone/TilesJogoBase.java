@@ -30,6 +30,7 @@ public interface TilesJogoBase {
 	TipoLadoCarcassonne CAMPO = TipoLadoCarcassonne.CAMPO;
 	TipoLadoCarcassonne CIDADE = TipoLadoCarcassonne.CIDADE;
 	TipoLadoCarcassonne ESTRADA = TipoLadoCarcassonne.ESTRADA;
+	TipoLadoCarcassonne RIO = TipoLadoCarcassonne.RIO;
 
 	boolean COM_ESCUDO = true;
 	boolean SEM_ESCUDO = false;
@@ -65,6 +66,7 @@ public interface TilesJogoBase {
 	TipoTile FRRR50 = new TipoTileCarcassonne(BASE, CAMPO, ESTRADA, ESTRADA, ESTRADA, SEM_ESCUDO, SEM_MOSTEIRO, SEM_CIDADES);
 	TipoTile RFRF50 = new TipoTileCarcassonne(BASE, ESTRADA, CAMPO, ESTRADA, CAMPO, SEM_ESCUDO, SEM_MOSTEIRO, SEM_CIDADES);
 	TipoTile RRRR50 = new TipoTileCarcassonne(BASE, ESTRADA, ESTRADA, ESTRADA, ESTRADA, SEM_ESCUDO, SEM_MOSTEIRO, SEM_CIDADES);
+	
 
 	Tile t01 = new Tile("01", CCCCS50);
 	Tile t02 = new Tile("02", CCFC50);
